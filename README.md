@@ -16,3 +16,10 @@ The Backend of K(= Korean)-uber Eats Clone
 ex)
 ALTER USER [YOUR_USERNAME] WITH PASSWORD '12345'
 ```
+
+
+# STACK
+1. Nest JS
+2. NODE JS
+3. TypeScript
+4. GraphQL
