@@ -2,7 +2,7 @@
 
 The Backend of K(= Korean)-uber Eats Clone
 
-**Preparation**
+## Preparation
 
 #1 DATABASE CONFIGURATION ( for mac )
 
@@ -17,9 +17,27 @@ ex)
 ALTER USER [YOUR_USERNAME] WITH PASSWORD '12345'
 ```
 
+## STACK
 
-# STACK
 1. Nest JS
 2. NODE JS
 3. TypeScript
 4. GraphQL
+
+## User Model:
+
+- id
+- createdAt
+- updatedAt
+
+- email
+- password
+- role(client|owner|delivery)
+
+## User CRUD:
+
+- Create Account
+- Log In
+- See Profile
+- Edit Profile
+- Verify Email
