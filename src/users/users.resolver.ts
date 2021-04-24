@@ -10,6 +10,7 @@ import { UserService } from './users.service';
 import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { AuthUser } from 'src/auth/auth-user.decorator';
 import { UserProfileInput, UserProfileOutput } from './dtos/user-profile.dto';
+import { EditProfileInput, EditProfileOutput } from './dtos/edit-profile.dto';
 
 @Resolver((of) => User)
 export class UserResolver {
@@ -72,6 +73,22 @@ export class UserResolver {
       return {
         error: 'User Not Found',
         ok: false,
+      };
+    }
+  }
+
+  @UseGuards(AuthGuard)
+  @Mutation((returns) => EditProfileOutput)
+  async editProfile(
+    @AuthUser() authUser: User,
+    @Args('input') editProfileInput: EditProfileInput,
+  ): Promise<EditProfileOutput> {
+    try {
+      await this.usersService.editProfile(authUser.id, editProfileInput);
+    } catch (error) {
+      return {
+        ok: false,
+        error,
       };
     }
   }
