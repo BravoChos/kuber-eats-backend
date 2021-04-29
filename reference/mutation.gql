@@ -1,0 +1,12 @@
+mutation {
+  login(input: { email: "darkslug@kakao.com", password: "1234qwer" }) {
+    ok
+  }
+}
+
+mutation {
+  editProfile(input: { email: "darkslug2@kakao.com" }) {
+    ok
+    error
+  }
+}
