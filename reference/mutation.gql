@@ -1,11 +1,28 @@
 mutation {
+  createAccount(
+    input: { email: "darkslug@kakao.com", password: "1234qwer", role: Client }
+  ) {
+    ok
+    error
+  }
+}
+
+mutation {
   login(input: { email: "darkslug@kakao.com", password: "1234qwer" }) {
     ok
+    error
   }
 }
 
 mutation {
   editProfile(input: { email: "darkslug2@kakao.com" }) {
+    ok
+    error
+  }
+}
+
+mutation {
+  verifyEmail(input: { code: "358e9791-e4a0-4cd7-b3b8-6ee58ed9d715" }) {
     ok
     error
   }
