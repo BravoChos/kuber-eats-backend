@@ -41,3 +41,10 @@ ALTER USER [YOUR_USERNAME] WITH PASSWORD '12345'
 - See Profile
 - Edit Profile
 - Verify Email
+
+## Restaurant Model
+
+- name
+- category
+- address
+- coverImage
