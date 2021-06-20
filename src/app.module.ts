@@ -13,6 +13,7 @@ import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
 import { Verification } from './users/entities/verification.entity';
+import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { Category } from './restaurants/entities/category.entity';
@@ -53,6 +54,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
       autoSchemaFile: true,
       context: ({ req }) => ({ user: req['user'] }),
     }),
+    AuthModule,
     UsersModule,
     RestaurantsModule,
     JwtModule.forRoot({
