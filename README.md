@@ -41,3 +41,35 @@ ALTER USER [YOUR_USERNAME] WITH PASSWORD '12345'
 - See Profile
 - Edit Profile
 - Verify Email
+
+## Restaurant Model
+
+- name
+- category
+- address
+- coverImage
+
+## Restaurant CRUD:
+
+- See Categories
+- See Restaurants by Category (pagination)
+- See Restaurants (pagination)
+- See Restaurant
+
+- Edit Restaurant
+- Delete Restaurant
+
+## Dish CRUD:
+
+- Create Dish
+- Edit Dish
+- Delete Dish
+
+## Order CRUD:
+
+- Orders CRUD
+- Orders Subscription (Owner, Customer, Delivery)
+
+## Payment CRUD:
+
+- Payments (CRON)
