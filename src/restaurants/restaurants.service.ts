@@ -47,13 +47,10 @@ export class RestaurantService {
     try {
       const newRestaurant = this.restaurants.create(createRestaurantInput);
       newRestaurant.owner = owner;
-
       const category = await this.categories.getOrCreate(
         createRestaurantInput.categoryName,
       );
-
       newRestaurant.category = category;
-
       await this.restaurants.save(newRestaurant);
       return {
         ok: true,
@@ -154,11 +151,9 @@ export class RestaurantService {
       };
     }
   }
-
   countRestaurants(category: Category) {
     return this.restaurants.count({ category });
   }
-
   async findCategoryBySlug({
     slug,
     page,
@@ -178,7 +173,6 @@ export class RestaurantService {
         take: 25,
         skip: (page - 1) * 25,
       });
-
       const totalResults = await this.countRestaurants(category);
       return {
         ok: true,
@@ -248,6 +242,8 @@ export class RestaurantService {
         where: {
           name: Raw((name) => `${name} ILIKE '%${query}%'`),
         },
+        skip: (page - 1) * 25,
+        take: 25,
       });
       return {
         ok: true,

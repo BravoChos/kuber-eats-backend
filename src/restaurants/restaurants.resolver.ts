@@ -101,10 +101,12 @@ export class RestaurantResolver {
 @Resolver((of) => Category)
 export class CategoryResolver {
   constructor(private readonly restaurantService: RestaurantService) {}
+
   @ResolveField((type) => Int)
   restaurantCount(@Parent() category: Category): Promise<number> {
     return this.restaurantService.countRestaurants(category);
   }
+
   @Query((type) => AllCategoriesOutput)
   allCategories(): Promise<AllCategoriesOutput> {
     return this.restaurantService.allCategories();
