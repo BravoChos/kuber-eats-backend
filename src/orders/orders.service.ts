@@ -185,63 +185,63 @@ export class OrderService {
     }
   }
 
-  //   async editOrder(
-  //     user: User,
-  //     { id: orderId, status }: EditOrderInput,
-  //   ): Promise<EditOrderOutput> {
-  //     try {
-  //       const order = await this.orders.findOne(orderId, {
-  //         relations: ['restaurant'],
-  //       });
-  //       if (!order) {
-  //         return {
-  //           ok: false,
-  //           error: 'Order not found.',
-  //         };
-  //       }
-  //       if (!this.canSeeOrder(user, order)) {
-  //         return {
-  //           ok: false,
-  //           error: "Can't see this.",
-  //         };
-  //       }
-  //       let canEdit = true;
-  //       if (user.role === UserRole.Client) {
-  //         canEdit = false;
-  //       }
-  //       if (user.role === UserRole.Owner) {
-  //         if (status !== OrderStatus.Cooking && status !== OrderStatus.Cooked) {
-  //           canEdit = false;
-  //         }
-  //       }
-  //       if (user.role === UserRole.Delivery) {
-  //         if (
-  //           status !== OrderStatus.PickedUp &&
-  //           status !== OrderStatus.Delivered
-  //         ) {
-  //           canEdit = false;
-  //         }
-  //       }
-  //       if (!canEdit) {
-  //         return {
-  //           ok: false,
-  //           error: "You can't do that.",
-  //         };
-  //       }
-  //       await this.orders.save([
-  //         {
-  //           id: orderId,
-  //           status,
-  //         },
-  //       ]);
-  //       return {
-  //         ok: true,
-  //       };
-  //     } catch {
-  //       return {
-  //         ok: false,
-  //         error: 'Could not edit order.',
-  //       };
-  //     }
-  //   }
+  async editOrder(
+    user: User,
+    { id: orderId, status }: EditOrderInput,
+  ): Promise<EditOrderOutput> {
+    try {
+      const order = await this.orders.findOne(orderId, {
+        relations: ['restaurant'],
+      });
+      if (!order) {
+        return {
+          ok: false,
+          error: 'Order not found.',
+        };
+      }
+      if (!this.canSeeOrder(user, order)) {
+        return {
+          ok: false,
+          error: "Can't see this.",
+        };
+      }
+      let canEdit = true;
+      if (user.role === UserRole.Client) {
+        canEdit = false;
+      }
+      if (user.role === UserRole.Owner) {
+        if (status !== OrderStatus.Cooking && status !== OrderStatus.Cooked) {
+          canEdit = false;
+        }
+      }
+      if (user.role === UserRole.Delivery) {
+        if (
+          status !== OrderStatus.PickedUp &&
+          status !== OrderStatus.Delivered
+        ) {
+          canEdit = false;
+        }
+      }
+      if (!canEdit) {
+        return {
+          ok: false,
+          error: "You can't do that.",
+        };
+      }
+      await this.orders.save([
+        {
+          id: orderId,
+          status,
+        },
+      ]);
+      return {
+        ok: true,
+      };
+    } catch {
+      return {
+        ok: false,
+        error: 'Could not edit order.',
+      };
+    }
+  }
 }
