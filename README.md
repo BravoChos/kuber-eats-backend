@@ -69,8 +69,8 @@ ALTER USER [YOUR_USERNAME] WITH PASSWORD '12345'
 
 - Orders CRUD
 - Orders Subscription
-  - Pending Orders (Owner) 
-  - Order Status (Customer, Delivery, Owner) 
+  - Pending Orders (Owner)
+  - Order Status (Customer, Delivery, Owner)
   - Pending Pickup Order (Delivery)
 
 ## Payment CRUD:
