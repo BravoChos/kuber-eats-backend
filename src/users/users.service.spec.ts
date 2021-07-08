@@ -2,7 +2,7 @@ import { Test } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { JwtService } from 'src/jwt/jwt.service';
 import { MailService } from 'src/mail/mail.service';
-import { User } from './entities/user.entity';
+import { User, UserRole } from './entities/user.entity';
 import { Verification } from './entities/verification.entity';
 import { UserService } from './users.service';
 import { Repository } from 'typeorm';
@@ -70,7 +70,7 @@ describe('UserService', () => {
     const createAccountArgs = {
       email: 'bs@email.com',
       password: 'bs.password',
-      role: 0,
+      role: UserRole.Client,
     };
 
     it('should fail if user exists', async () => {
@@ -79,7 +79,7 @@ describe('UserService', () => {
         email: '',
       });
       const result = await service.createAccount(createAccountArgs);
-      //   console.log(result);
+      console.log(result);
       expect(result).toMatchObject({
         ok: false,
         error: 'There is a user with that email already',
