@@ -128,7 +128,7 @@ describe('UserModule (e2e)', () => {
           mutation {
             login(input:{
               email:"${testUser.email}",
-              password:"xxx",
+              password:"testxxx",
             }) {
               ok
               error
