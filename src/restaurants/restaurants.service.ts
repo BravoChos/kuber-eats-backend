@@ -199,7 +199,9 @@ export class RestaurantService {
         order: {
           isPromoted: 'DESC',
         },
+        relations: ['category'],
       });
+      console.log(restaurants);
       return {
         ok: true,
         results: restaurants,
@@ -219,8 +221,9 @@ export class RestaurantService {
   }: RestaurantInput): Promise<RestaurantOutput> {
     try {
       const restaurant = await this.restaurants.findOne(restaurantId, {
-        relations: ['menu'],
+        relations: ['menu', 'category'],
       });
+      console.log(restaurant, '12222');
       if (!restaurant) {
         return {
           ok: false,
