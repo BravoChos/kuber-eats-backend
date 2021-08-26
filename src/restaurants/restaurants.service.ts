@@ -21,7 +21,10 @@ import {
 } from './dtos/edit-restaurant.dto';
 import { RestaurantInput, RestaurantOutput } from './dtos/restaurant.dto';
 import { RestaurantsInput, RestaurantsOutput } from './dtos/restaurants.dto';
-import { MyRestaurantInput, MyRestaurantOutput } from './dtos/my-restaurant';
+import {
+  MyRestaurantInput,
+  MyRestaurantOutput,
+} from './dtos/my-restaurant.dto';
 import { MyRestaurantsOutput } from './dtos/my-restaurants.dto';
 import {
   SearchRestaurantInput,
