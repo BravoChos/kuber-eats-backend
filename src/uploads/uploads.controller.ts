@@ -22,25 +22,25 @@ export class UploadsController {
     });
 
     try {
-      const upload = await new AWS.S3()
-        .createBucket({
-          Bucket: BUCKET_NAME,
-        })
-        .promise();
-      console.log({ file });
-      console.log({ upload });
-
-      // const objectName = `${Date.now() + file.originalname}`;
-      // await new AWS.S3()
-      //   .putObject({
-      //     Body: file.buffer,
+      // const upload = await new AWS.S3()
+      //   .createBucket({
       //     Bucket: BUCKET_NAME,
-      //     Key: objectName,
-      //     ACL: 'public-read',
       //   })
       //   .promise();
-      // const url = `https://${BUCKET_NAME}.s3.amazonaws.com/${objectName}`;
-      // return { url };
+      // console.log({ file });
+      // console.log({ upload });
+
+      const objectName = `${Date.now() + file.originalname}`;
+      await new AWS.S3()
+        .putObject({
+          Body: file.buffer,
+          Bucket: BUCKET_NAME,
+          Key: objectName,
+          ACL: 'public-read',
+        })
+        .promise();
+      const url = `https://${BUCKET_NAME}.s3.amazonaws.com/${objectName}`;
+      return { url };
     } catch (e) {
       return null;
     }
