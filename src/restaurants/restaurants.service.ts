@@ -34,6 +34,7 @@ import { Category } from './entities/category.entity';
 import { Dish } from './entities/dish.entity';
 import { Restaurant } from './entities/restaurant.entity';
 import { CategoryRepository } from './repositories/category.repository';
+import { boolean } from 'joi';
 
 @Injectable()
 export class RestaurantService {
@@ -398,9 +399,16 @@ export class RestaurantService {
   ): Promise<MyRestaurantOutput> {
     try {
       const restaurant = await this.restaurants.findOne(
-        { owner, id },
-        { relations: ['menu', 'orders'] },
+        {
+          owner,
+          id,
+        },
+        {
+          relations: ['menu', 'orders'],
+        },
       );
+
+      restaurant.orders.sort((a, b) => a.id - b.id);
       return {
         restaurant,
         ok: true,
