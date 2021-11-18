@@ -4,6 +4,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as AWS from 'aws-sdk';
 
@@ -11,6 +12,7 @@ const BUCKET_NAME = 'kubereats';
 
 @Controller('uploads')
 export class UploadsController {
+  constructor(private readonly configService: ConfigService) {}
   @Post('')
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file) {
